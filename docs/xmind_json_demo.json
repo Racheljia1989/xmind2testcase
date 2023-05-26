@@ -25,6 +25,7 @@
               "link": null,
               "title": "测试用例1",
               "note": "前置条件\n",
+//              "label": "功能测试（默认为功能测试）"
               "label": "手动（执行方式默认为手动）",
               "comment": null,
               "markers": [

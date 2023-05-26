@@ -9,6 +9,7 @@ from contextlib import closing
 from os.path import join, exists
 from werkzeug.utils import secure_filename
 from xmind2testcase.zentao import xmind_to_zentao_csv_file
+from xmind2testcase.xlsx import csv_to_xlsx_pd
 from xmind2testcase.testlink import xmind_to_testlink_xml_file
 from xmind2testcase.utils import get_xmind_testsuites, get_xmind_testcase_list
 from flask import Flask, request, send_from_directory, g, render_template, abort, redirect, url_for
@@ -252,6 +253,18 @@ def download_zentao_file(filename):
 
     zentao_csv_file = xmind_to_zentao_csv_file(full_path)
     filename = os.path.basename(zentao_csv_file) if zentao_csv_file else abort(404)
+
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
+
+@app.route('/<filename>/to/xlsx')
+def download_xlsx_file(filename):
+    full_path = join(app.config['UPLOAD_FOLDER'], filename)
+
+    if not exists(full_path):
+        abort(404)
+
+    xlsx_file = csv_to_xlsx_pd(full_path)
+    filename = os.path.basename(xlsx_file) if xlsx_file else abort(404)
 
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
