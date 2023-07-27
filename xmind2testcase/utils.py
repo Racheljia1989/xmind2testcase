@@ -137,3 +137,8 @@ def xmind_testcase_to_json_file(xmind_file):
         logging.info('Convert XMind file(%s) to a testcase json file(%s) successfully!', xmind_file, testcase_json_file)
 
     return testcase_json_file
+
+
+if __name__ == '__main__':
+    xmind_file='E:\LIU\脑图\智能客服1.0_测试产品.xmind'
+    get_xmind_testsuites=get_xmind_testcase_list(xmind_file)

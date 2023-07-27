@@ -29,7 +29,9 @@ def xmind_to_testsuites(xmind_content_dict):
         suite = sheet_to_suite(root_topic)
         # suite.sheet_name = sheet['title']  # root testsuite has a sheet_name attribute
         logging.debug('sheet(%s) parsing complete: %s', sheet['title'], suite.to_dict())
+
         suites.append(suite)
+
 
     return suites
 
@@ -76,7 +78,7 @@ def sheet_to_suite(root_topic):
 
     for suite_dict in root_topic['topics']:
         suite.sub_suites.append(parse_testsuite(suite_dict))
-
+    print('suite is : %s ' %suite)
     return suite
 
 
@@ -192,6 +194,8 @@ def gen_testcase_title(topics):
     separator = config['sep']
     if separator != ' ':
         separator = ' {} '.format(separator)
+    else:
+        separator = '_'
 
     return separator.join(titles)
 
