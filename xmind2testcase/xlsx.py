@@ -29,6 +29,6 @@ def csv_to_xlsx_pd(xmind_file):
     return save_xlsx_file
 
 if __name__ == '__main__':
-    xmind_file = 'E:\LIU\脑图\智能客服1.0_测试产品.xmind'
+    xmind_file = '..\docs\zentao_testcase_template.xmind'
     xlsx_file = csv_to_xlsx_pd(xmind_file)
     print('Conver the xmind file to a xlsx file succssfully: %s', xlsx_file)

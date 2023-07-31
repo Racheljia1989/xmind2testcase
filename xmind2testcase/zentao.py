@@ -44,7 +44,7 @@ def xmind_to_zentao_csv_file(xmind_file):
 
 def gen_a_testcase_row(testcase_dict):
     case_number = ''
-    case_review_status = 'pass'
+    case_review_status = '草稿'
     case_related_requirements = ''
     case_module = gen_case_module(testcase_dict['suite'])
     case_title = testcase_dict['name']
